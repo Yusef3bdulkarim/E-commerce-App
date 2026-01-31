@@ -1,10 +1,9 @@
-import 'package:ecommerceapp/core/utils/constants/colors.dart';
-import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
+import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
-import 'package:ecommerceapp/core/utils/helpers/exports.dart';
+
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+
 import 'package:iconsax/iconsax.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -13,7 +12,6 @@ class LoginFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: TSizes.xl),
       child: Form(
@@ -66,7 +64,12 @@ class LoginFormWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutingHelper.forgetPasswordScreen,
+                      );
+                    },
                     child: const Text(TTexts.tForgetPassword),
                   ),
                 ),

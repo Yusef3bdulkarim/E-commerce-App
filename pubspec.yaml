@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   iconsax: ^0.0.8
   google_fonts: ^7.1.0
-  get: ^4.7.3
   url_launcher: ^6.3.2
   intl: ^0.20.2
   firebase_core: ^4.4.0

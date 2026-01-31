@@ -1,10 +1,10 @@
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
-import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
 import 'package:ecommerceapp/core/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class DividerSignin extends StatelessWidget {
-  const DividerSignin({super.key});
+  const DividerSignin({super.key, required this.textDiivder});
+  final String textDiivder;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class DividerSignin extends StatelessWidget {
             endIndent: 5,
           ),
         ),
-        Text(TTexts.tOrSignIn, style: Theme.of(context).textTheme.labelMedium),
+        Text(textDiivder, style: Theme.of(context).textTheme.labelMedium),
         Flexible(
           child: Divider(
             color: dark ? TColors.grey : TColors.darkGrey,

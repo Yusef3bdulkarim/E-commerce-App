@@ -1,52 +1,42 @@
 import 'dart:async';
-import 'package:get/get.dart';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../popups/loaders.dart';
-
-/// Manages the network connectivity status and provides methods to check and handle connectivity changes.
-class NetworkManager extends GetxController {
-  static NetworkManager get instance => Get.find();
-
+class NetworkManagerCubit extends Cubit<bool> {
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
-  final RxList<ConnectivityResult> _connectionStatus = <ConnectivityResult>[].obs;
 
-  /// Initialize the network manager and set up a stream to continually check the connection status.
-  @override
-  void onInit() {
-    super.onInit();
-    _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+  // القيمة الابتدائية نفترض أنها true (متصل) حتى يتم الفحص
+  NetworkManagerCubit() : super(true) {
+    _monitorConnection();
   }
 
-  /// Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.
-  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
-    _connectionStatus.value = result;
+  void _monitorConnection() {
+    _connectivitySubscription = _connectivity.onConnectivityChanged.listen((
+      result,
+    ) {
+      _updateConnectionStatus(result);
+    });
+  }
+
+  void _updateConnectionStatus(List<ConnectivityResult> result) {
     if (result.contains(ConnectivityResult.none)) {
-      TLoaders.customToast(message: 'No Internet Connection');
+      emit(false); // تحديث الحالة إلى غير متصل
+    } else {
+      emit(true); // تحديث الحالة إلى متصل
     }
   }
 
-  /// Check the internet connection status.
-  /// Returns `true` if connected, `false` otherwise.
+  // دالة للفحص اليدوي السريع
   Future<bool> isConnected() async {
-    try {
-      final result = await _connectivity.checkConnectivity();
-      if (result.any((element) => element == ConnectivityResult.none)) {
-        return false;
-      } else {
-        return true;
-      }
-    } on PlatformException catch (_) {
-      return false;
-    }
+    final result = await _connectivity.checkConnectivity();
+    return !result.contains(ConnectivityResult.none);
   }
 
-  /// Dispose or close the active connectivity stream.
   @override
-  void onClose() {
-    super.onClose();
-    _connectivitySubscription.cancel();
+  Future<void> close() {
+    _connectivitySubscription.cancel(); // إغلاق الاشتراك عند تدمير الكيوبت
+    return super.close();
   }
 }

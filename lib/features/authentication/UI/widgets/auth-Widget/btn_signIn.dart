@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
@@ -49,7 +50,9 @@ class BtnSignin extends StatelessWidget {
                 width: 1.0,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, RoutingHelper.signUpScreen);
+            },
             child: Text(
               TTexts.tCreateAccount,
               style: TextStyle(
