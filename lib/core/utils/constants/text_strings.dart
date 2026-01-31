@@ -17,6 +17,7 @@ class TTexts {
   static const String tSignup = "Signup";
   static const String tCreateAccount = "Create Account";
   static const String tOrSignIn = "Or Sign In With";
+  static const String tOrSignUp = "Or Sign Up With";
   static const String tLogout = "Logout";
   static const String appName = "T-Store";
   static const String ohSnap = "Oh Snap!";
@@ -26,6 +27,14 @@ class TTexts {
   static const String tContinue = "Continue";
   static const String tPassword = "Password";
   static const String tFullName = "Full Name";
+  static const String tuserName = "User Name";
+  static const String tIAgreeTo = "I agree to";
+  static const String tPrivacyPolicy = "Privacy Policy";
+  static const String tAnd = "and";
+  static const String tTermOfUse = "Term of use";
+
+  static const String tFirstName = "First Name";
+  static const String tLastName = "Last Name";
   static const String tGetStarted = "Get Started";
   static const String tForgetPassword = "Forget Password?";
   static const String homeAppbarSubTitle = "Coding With T";
@@ -83,7 +92,7 @@ class TTexts {
   static const String tGoogle = "Google";
 
   // -- Sign Up Screen Text
-  static const String tSignUpTitle = "Get On Board!";
+  static const String tSignUpTitle = "Let's create your account !";
   static const String tSignUpSubTitle =
       "Create your profile to start your Journey.";
   static const String tAlreadyHaveAnAccount = "Already have an Account";
@@ -104,6 +113,9 @@ class TTexts {
       "Select one of the options given below to reset your password.";
   static const String tResetViaEMail = "Reset via Mail Verification";
   static const String tResetViaPhone = "Reset via Phone Verification";
+  static const String tChangeYourPassTitle = "Password Reset Email Sent";
+  static const String tChangeYourPassSubTitle =
+      "Welcome to Your Application: Your Account is Created, Unleash the Joy of Seamless Online Experience!";
 
   // -- Forget Password Via Phone - Text
   static const String tForgetPhoneSubTitle =
