@@ -2,4 +2,9 @@ class RoutingHelper {
   static const String startScreen = '/';
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String signInScreen = '/signInScreen';
+  static const String signUpScreen = '/signUpScreen';
+  static const String verifyEmailScreen = '/verifyEmailScreen';
+  static const String successScreen = '/SuccessScreen';
+  static const String forgetPasswordScreen = '/forgetPasswordScreen ';
+  static const String resetPasswordScreen = '/resetPasswordScreen ';
 }

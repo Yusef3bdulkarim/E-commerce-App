@@ -1,12 +1,11 @@
-import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
 import 'package:ecommerceapp/core/utils/helpers/helper_functions.dart';
 import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/btn_signIn.dart';
-import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/divider_signIn.dart';
+import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/divider_auth.dart';
 import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/form_signIn.dart';
-import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/section_icons_signIn.dart';
+import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/section_icons_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -52,7 +51,7 @@ class SignInScreen extends StatelessWidget {
               LoginFormWidget(),
               BtnSignin(),
               Gap(TSizes.defaultSpace),
-              DividerSignin(),
+              DividerSignin(textDiivder: " ${TTexts.tOrSignIn} "),
               Gap(TSizes.spaceBtwSections),
               SectionIconsSignin(),
             ],

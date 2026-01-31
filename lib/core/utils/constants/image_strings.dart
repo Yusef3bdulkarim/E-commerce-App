@@ -56,7 +56,7 @@ class TImages {
   static const String deliveredEmailIllustration =
       "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static String successfullyRegisterAnimation =
-      "assets/images/animations/72462-check-register.json";
+      "assets/images/animations/OIP.webp";
 
   // -- Category Icons
   static const String sportIcon =
