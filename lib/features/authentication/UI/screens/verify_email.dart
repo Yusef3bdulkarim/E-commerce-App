@@ -4,7 +4,7 @@ import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
 import 'package:ecommerceapp/core/utils/helpers/exports.dart';
-import 'package:ecommerceapp/core/widget/success_screen.dart';
+import 'package:ecommerceapp/core/widget/success_screen/success_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

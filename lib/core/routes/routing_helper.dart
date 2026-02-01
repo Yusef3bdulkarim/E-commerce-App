@@ -7,4 +7,6 @@ class RoutingHelper {
   static const String successScreen = '/SuccessScreen';
   static const String forgetPasswordScreen = '/forgetPasswordScreen ';
   static const String resetPasswordScreen = '/resetPasswordScreen ';
+  static const String homeScreen = '/HomeScreen ';
+  static const String storeScreen = '/StoreScreen ';
 }

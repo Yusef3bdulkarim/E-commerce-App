@@ -26,7 +26,11 @@ class BtnSignin extends StatelessWidget {
                 width: 1.0,
               ),
             ),
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(
+              context,
+              RoutingHelper.homeScreen,
+              (route) => false,
+            ),
             child: Text(
               TTexts.tSignIn,
               style: TextStyle(

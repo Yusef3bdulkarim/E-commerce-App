@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/core/routes/routing_helper.dart';
-import 'package:ecommerceapp/core/widget/success_screen.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/forget_password.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/onboarding_screen.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/reset_password.dart';
@@ -7,7 +6,8 @@ import 'package:ecommerceapp/features/authentication/UI/screens/sign_in_screen.d
 import 'package:ecommerceapp/features/authentication/UI/screens/sign_up_screen.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/verify_email.dart';
 import 'package:ecommerceapp/features/authentication/logic/cubit/auth_cubit.dart';
-
+import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/store_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,6 +34,10 @@ class RoutingApp {
         return MaterialPageRoute(builder: (_) => ForgetPassword());
       case RoutingHelper.resetPasswordScreen:
         return MaterialPageRoute(builder: (_) => ResetPassword());
+      case RoutingHelper.homeScreen:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
+      case RoutingHelper.storeScreen:
+        return MaterialPageRoute(builder: (_) => StoreScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
