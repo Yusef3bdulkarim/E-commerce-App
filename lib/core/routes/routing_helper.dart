@@ -9,4 +9,7 @@ class RoutingHelper {
   static const String resetPasswordScreen = '/resetPasswordScreen ';
   static const String homeScreen = '/HomeScreen ';
   static const String storeScreen = '/StoreScreen ';
+  static const String wishlistScreen = '/WishlistScreen ';
+  static const String settingsScreen = '/SettingsScreen ';
+  static const String profileScreen = '/ProfileScreen ';
 }
