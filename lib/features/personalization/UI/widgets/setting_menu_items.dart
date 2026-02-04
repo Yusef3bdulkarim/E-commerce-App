@@ -1,0 +1,35 @@
+import 'package:ecommerceapp/core/utils/constants/colors.dart';
+
+import 'package:flutter/material.dart';
+
+class TSettingMenuItems extends StatelessWidget {
+  const TSettingMenuItems({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+    this.trailing,
+  });
+  final IconData icon;
+  final String title, subTitle;
+  final Widget? trailing;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon, color: TColors.primary),
+      title: Text(
+        title,
+        style: Theme.of(
+          context,
+        ).textTheme.headlineSmall!.apply(color: TColors.white),
+      ),
+      subtitle: Text(
+        subTitle,
+        style: Theme.of(
+          context,
+        ).textTheme.bodyMedium!.apply(color: TColors.white),
+      ),
+      trailing: trailing,
+    );
+  }
+}

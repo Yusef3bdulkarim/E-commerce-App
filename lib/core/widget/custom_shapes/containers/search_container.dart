@@ -7,21 +7,23 @@ import 'package:gap/gap.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TSearchContainer extends StatelessWidget {
-  const TSearchContainer({
+  TSearchContainer({
     super.key,
     required this.text,
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true,
+    this.padding = const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
   });
   final String text;
   final IconData icon;
   final bool showBackground, showBorder;
+  final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+      padding: padding,
       child: Container(
         width: TDeviceUtils.getScreenWidth(context),
         padding: EdgeInsets.all(TSizes.md),

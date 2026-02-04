@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
+import 'package:ecommerceapp/core/utils/constants/enums.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/helpers/helper_functions.dart';
@@ -6,7 +7,9 @@ import 'package:ecommerceapp/core/utils/theme/widget_themes/shadow_style.dart';
 import 'package:ecommerceapp/core/widget/custom_shapes/containers/rounded_container.dart';
 import 'package:ecommerceapp/core/widget/icons/circle_icons.dart';
 import 'package:ecommerceapp/core/widget/images/rounded_image.dart';
+import 'package:ecommerceapp/core/widget/texts/brand_titile_text.dart';
 import 'package:ecommerceapp/core/widget/texts/product_title_text.dart';
+import 'package:ecommerceapp/core/widget/texts/text_brand_title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:iconsax/iconsax.dart';
@@ -20,7 +23,6 @@ class TProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: 180,
         padding: EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [TShadowStyle.horizontalProductShadow],
@@ -79,22 +81,7 @@ class TProductCardVertical extends StatelessWidget {
                 children: [
                   TProductTitleText(title: 'Green Nike Air Shoes'),
                   Gap(TSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        style: Theme.of(context).textTheme.labelMedium,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      Gap(TSizes.xs),
-                      Icon(
-                        Iconsax.verify5,
-                        color: TColors.primary,
-                        size: TSizes.iconXs,
-                      ),
-                    ],
-                  ),
+                  TBrandTitleTextWithVertifiedIcon(title: "Nike"),
 
                   Row(
                     children: [

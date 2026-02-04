@@ -28,7 +28,7 @@ class BtnSignin extends StatelessWidget {
             ),
             onPressed: () => Navigator.pushNamedAndRemoveUntil(
               context,
-              RoutingHelper.homeScreen,
+              RoutingHelper.settingsScreen,
               (route) => false,
             ),
             child: Text(
