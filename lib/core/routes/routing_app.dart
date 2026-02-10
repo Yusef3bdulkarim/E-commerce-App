@@ -6,6 +6,8 @@ import 'package:ecommerceapp/features/authentication/UI/screens/sign_in_screen.d
 import 'package:ecommerceapp/features/authentication/UI/screens/sign_up_screen.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/verify_email.dart';
 import 'package:ecommerceapp/features/authentication/logic/cubit/auth_cubit.dart';
+import 'package:ecommerceapp/features/personalization/UI/screens/add_new_address.dart';
+import 'package:ecommerceapp/features/personalization/UI/screens/address_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/profile_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
@@ -56,6 +58,11 @@ class RoutingApp {
         return MaterialPageRoute(builder: (_) => ProductDetailsScreen());
       case RoutingHelper.productReviewScreen:
         return MaterialPageRoute(builder: (_) => ProductReviewScreen());
+      case RoutingHelper.userAddressScreen:
+        return MaterialPageRoute(builder: (_) => UserAddressScreen());
+
+      case RoutingHelper.addNewAddressScreen:
+        return MaterialPageRoute(builder: (_) => AddNewAddressScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>

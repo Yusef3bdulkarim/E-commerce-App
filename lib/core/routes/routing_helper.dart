@@ -15,4 +15,6 @@ class RoutingHelper {
   static const String NavigationScreen = '/NavigationScreen ';
   static const String productDetailsScreen = '/ProductDetailsScreen ';
   static const String productReviewScreen = '/ProductReviewScreen ';
+  static const String userAddressScreen = '/UserAddressScreen ';
+  static const String addNewAddressScreen = '/AddNewAddressScreen ';
 }
