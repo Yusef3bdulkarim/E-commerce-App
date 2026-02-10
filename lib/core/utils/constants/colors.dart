@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TColors {
   // App theme colors
   // static const Color primary = Color(0xFFFFE400);
-  static const Color primary = Color.fromARGB(197, 0, 94, 70);
+  static const Color primary = Color.fromARGB(255, 0, 94, 71);
   static const Color secondary = Color(0xFF272727);
   static const Color secondaryLight = Color(0xC9346DAE);
   static const Color primaryBackground = Color(
@@ -32,15 +32,22 @@ class TColors {
   ); // Theme Nightingale Gray 30
   static const Color textWhite = Colors.white;
 
-  static const Color disabledTextLight = Color(
-    0xFFD1D5DB,
+  static const Color disabledTextLight = Color.fromARGB(
+    255,
+    255,
+    255,
+    255,
   ); // Theme Nightingale Gray 30
   static const Color disabledBackgroundLight = Color(
     0xFFF3F4F6,
   ); // Theme Nightingale Gray ?
 
-  static const Color disabledTextDark =
-      textSecondary; // Theme Nightingale Gray 60
+  static const Color disabledTextDark = Color.fromARGB(
+    255,
+    255,
+    255,
+    255,
+  ); // Theme Nightingale Gray 60
   static const Color disabledBackgroundDark = Color(
     0xFF222A3D,
   ); // Theme Nightingale Gray 80

@@ -31,7 +31,7 @@ class OnBoardingNextButton extends StatelessWidget {
                 );
               }
             },
-            child: const Icon(Iconsax.arrow_right),
+            child: const Icon(Iconsax.arrow_right, color: TColors.white),
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
               backgroundColor: dark ? TColors.primary : TColors.black,

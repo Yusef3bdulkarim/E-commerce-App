@@ -86,7 +86,7 @@ class VerifyEmail extends StatelessWidget {
                   child: Text(
                     TTexts.tContinue,
                     style: TextStyle(
-                      color: TColors.disabledTextDark,
+                      color: TColors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: TSizes.fontSizeMd,
                     ),

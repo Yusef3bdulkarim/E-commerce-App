@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/theming/custom_themes/chip_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'widget_themes/appbar_theme.dart';
@@ -13,6 +14,7 @@ class TAppTheme {
     scaffoldBackgroundColor: Colors.white,
     brightness: Brightness.light,
     textTheme: TTextTheme.lightTextTheme,
+    chipTheme: TChipTheme.lightChipTheme,
     appBarTheme: TAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
@@ -20,8 +22,10 @@ class TAppTheme {
   );
 
   static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: Colors.black,
     brightness: Brightness.dark,
     textTheme: TTextTheme.darkTextTheme,
+    chipTheme: TChipTheme.lightChipTheme,
     appBarTheme: TAppBarTheme.darkAppBarTheme,
     elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.darkOutlinedButtonTheme,
