@@ -10,7 +10,7 @@ import 'package:ecommerceapp/features/personalization/UI/screens/profile_screen.
 import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/product_details.dart';
-import 'package:ecommerceapp/features/products/UI/screens/product_review_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/product_review_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/store_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/wishlist_screen.dart';
 import 'package:ecommerceapp/navigation_menu.dart';

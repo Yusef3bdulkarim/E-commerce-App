@@ -15,7 +15,8 @@ class TProductAttributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return Column(
+    return
+      Column(
       children: [
         TRoundedContainer(
           backgroundColor: dark ? TColors.darkGrey : TColors.grey,
@@ -109,5 +110,7 @@ class TProductAttributes extends StatelessWidget {
         ),
       ],
     );
+
+
   }
 }

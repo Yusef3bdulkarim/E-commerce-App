@@ -6,6 +6,7 @@ class TImages {
   static const String darkAppLogo = "assets/logo/t-store-splash-logo-black.png";
   static const String lightAppLogo =
       "assets/logo/t-store-splash-logo-white.png";
+
   // -- Splash Screen Images
   static const String tSplashTopIcon =
       "assets/images/splash_images/splash-top-icon.png";
@@ -156,4 +157,6 @@ class TImages {
 
   //Profile
   static const String user = "assets/images/profile/user.png";
+  static const String user2 = "assets/images/profile/userr2.webp";
+  static const String user3 = "assets/images/profile/userr3.webp";
 }
