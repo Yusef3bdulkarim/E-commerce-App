@@ -10,6 +10,7 @@ import 'package:ecommerceapp/features/personalization/UI/screens/add_new_address
 import 'package:ecommerceapp/features/personalization/UI/screens/address_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/profile_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/cart_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/product_details.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/product_review_screen.dart';
@@ -60,7 +61,8 @@ class RoutingApp {
         return MaterialPageRoute(builder: (_) => ProductReviewScreen());
       case RoutingHelper.userAddressScreen:
         return MaterialPageRoute(builder: (_) => UserAddressScreen());
-
+      case RoutingHelper.cartScreen:
+        return MaterialPageRoute(builder: (_) => CartScreen());
       case RoutingHelper.addNewAddressScreen:
         return MaterialPageRoute(builder: (_) => AddNewAddressScreen());
       default:
