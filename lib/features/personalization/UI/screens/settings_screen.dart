@@ -55,6 +55,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   Gap(TSizes.spaceBtwItems),
                   TSettingMenuItems(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RoutingHelper.userAddressScreen,
+                    ),
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery addrees',

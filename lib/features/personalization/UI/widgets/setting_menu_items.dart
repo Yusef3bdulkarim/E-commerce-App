@@ -10,28 +10,35 @@ class TSettingMenuItems extends StatelessWidget {
     required this.title,
     required this.subTitle,
     this.trailing,
+    this.onTap,
   });
+
   final IconData icon;
   final String title, subTitle;
   final Widget? trailing;
+  final VoidCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return ListTile(
-      leading: Icon(icon, color: TColors.primary),
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineSmall!.apply(
-          color: dark ? TColors.white : TColors.black,
+    return GestureDetector(
+      onTap: onTap,
+      child: ListTile(
+        leading: Icon(icon, color: TColors.primary),
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.headlineSmall!.apply(
+            color: dark ? TColors.white : TColors.black,
+          ),
         ),
-      ),
-      subtitle: Text(
-        subTitle,
-        style: Theme.of(context).textTheme.bodyMedium!.apply(
-          color: dark ? TColors.white : TColors.black,
+        subtitle: Text(
+          subTitle,
+          style: Theme.of(context).textTheme.bodyMedium!.apply(
+            color: dark ? TColors.white : TColors.black,
+          ),
         ),
+        trailing: trailing,
       ),
-      trailing: trailing,
     );
   }
 }

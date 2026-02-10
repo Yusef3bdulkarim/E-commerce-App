@@ -1,5 +1,7 @@
 /* -- App Text Strings -- */
 
+import 'package:ecommerceapp/core/utils/helpers/exports.dart';
+
 /// This class contains all the App Text in String formats.
 class TTexts {
   // -- GLOBAL Texts
