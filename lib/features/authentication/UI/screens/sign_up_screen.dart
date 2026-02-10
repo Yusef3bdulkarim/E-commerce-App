@@ -49,9 +49,9 @@ class SignUpScreen extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    TTexts.tSignIn,
+                    TTexts.tSignup,
                     style: TextStyle(
-                      color: TColors.disabledTextDark,
+                      color: TColors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: TSizes.fontSizeMd,
                     ),

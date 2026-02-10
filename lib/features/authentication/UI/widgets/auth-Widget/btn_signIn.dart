@@ -28,13 +28,13 @@ class BtnSignin extends StatelessWidget {
             ),
             onPressed: () => Navigator.pushNamedAndRemoveUntil(
               context,
-              RoutingHelper.settingsScreen,
+              RoutingHelper.NavigationScreen,
               (route) => false,
             ),
             child: Text(
               TTexts.tSignIn,
               style: TextStyle(
-                color: TColors.disabledTextDark,
+                color: TColors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: TSizes.fontSizeMd,
               ),
@@ -60,9 +60,7 @@ class BtnSignin extends StatelessWidget {
             child: Text(
               TTexts.tCreateAccount,
               style: TextStyle(
-                color: dark
-                    ? TColors.disabledTextLight
-                    : TColors.disabledTextDark,
+                color: dark ? TColors.disabledTextLight : TColors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: TSizes.fontSizeMd,
               ),
