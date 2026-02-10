@@ -1,27 +1,32 @@
+import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TCartCounterIcon extends StatelessWidget {
-  const TCartCounterIcon({
+  const TCartCounterIcon(
+   {
     super.key,
-    this.iconColor = TColors.white,
+     this.counterBgColor,
+     this.counterTextColor,
+     this.iconColor ,
     required this.onPressed,
   });
-  final Color iconColor;
+
+  final Color? iconColor, counterBgColor, counterTextColor;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () =>
+              Navigator.pushNamed(context, RoutingHelper.cartScreen),
           icon: const Icon(Iconsax.shopping_bag),
-          color: THelperFunctions.isDarkMode(context)
-              ? TColors.white
-              : TColors.black,
+          color: iconColor?? (dark ? TColors.white : TColors.black),
         ),
         Positioned(
           right: 0,
@@ -29,7 +34,7 @@ class TCartCounterIcon extends StatelessWidget {
             height: 18,
             width: 18,
             decoration: BoxDecoration(
-              color: TColors.black.withOpacity(0.5),
+              color: counterBgColor ?? (dark ? TColors.black : TColors.black),
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(

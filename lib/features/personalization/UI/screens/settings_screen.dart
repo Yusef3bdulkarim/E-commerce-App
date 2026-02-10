@@ -64,6 +64,10 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'Set shopping delivery addrees',
                   ),
                   TSettingMenuItems(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RoutingHelper.cartScreen,
+                    ),
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add , remove products and move to checkout ',

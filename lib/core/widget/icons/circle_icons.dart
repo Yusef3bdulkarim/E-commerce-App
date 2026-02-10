@@ -12,12 +12,15 @@ class TCircleIcons extends StatelessWidget {
     this.width,
     this.size = TSizes.lg,
     this.color,
+    this.backgroundColor,
+    this.isBackground = true,
   });
 
   final IconData nameIcons;
   final void Function()? onPressed;
   final double? height, width, size;
-  final Color? color;
+  final Color? color, backgroundColor;
+  final bool isBackground;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,11 @@ class TCircleIcons extends StatelessWidget {
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: dark
-            ? TColors.black.withOpacity(0.9)
-            : TColors.white.withOpacity(0.8),
+        color: isBackground
+            ? dark
+                  ? TColors.black.withOpacity(0.1)
+                  : TColors.white.withOpacity(0.5)
+            : backgroundColor,
       ),
       child: IconButton(
         onPressed: onPressed,
