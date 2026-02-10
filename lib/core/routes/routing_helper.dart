@@ -12,4 +12,7 @@ class RoutingHelper {
   static const String wishlistScreen = '/WishlistScreen ';
   static const String settingsScreen = '/SettingsScreen ';
   static const String profileScreen = '/ProfileScreen ';
+  static const String NavigationScreen = '/NavigationScreen ';
+  static const String productDetailsScreen = '/ProductDetailsScreen ';
+  static const String productReviewScreen = '/ProductReviewScreen ';
 }

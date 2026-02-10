@@ -9,8 +9,11 @@ import 'package:ecommerceapp/features/authentication/logic/cubit/auth_cubit.dart
 import 'package:ecommerceapp/features/personalization/UI/screens/profile_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/product_details.dart';
+import 'package:ecommerceapp/features/products/UI/screens/product_review_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/store_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/wishlist_screen.dart';
+import 'package:ecommerceapp/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,6 +50,12 @@ class RoutingApp {
         return MaterialPageRoute(builder: (_) => SettingsScreen());
       case RoutingHelper.profileScreen:
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+      case RoutingHelper.NavigationScreen:
+        return MaterialPageRoute(builder: (_) => NavigationMenu());
+      case RoutingHelper.productDetailsScreen:
+        return MaterialPageRoute(builder: (_) => ProductDetailsScreen());
+      case RoutingHelper.productReviewScreen:
+        return MaterialPageRoute(builder: (_) => ProductReviewScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
