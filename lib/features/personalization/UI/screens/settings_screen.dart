@@ -74,6 +74,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   TSettingMenuItems(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RoutingHelper.orderScreen,
+                    ),
                     icon: Iconsax.bag_tick,
                     title: 'My Order',
                     subTitle:
