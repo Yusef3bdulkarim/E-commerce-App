@@ -18,5 +18,6 @@ class RoutingHelper {
   static const String userAddressScreen = '/UserAddressScreen ';
   static const String addNewAddressScreen = '/AddNewAddressScreen ';
   static const String cartScreen = '/cartScreen ';
+  static const String checkoutScreen = '/checkoutScreen ';
 
 }

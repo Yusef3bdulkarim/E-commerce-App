@@ -9,13 +9,14 @@ class TBtnApp extends StatelessWidget {
     required this.text,
     this.width = double.infinity,
     this.color = TColors.primary,
-    this.textColor = TColors.white,
+    this.textColor = TColors.white,  this.onPressed,
   });
 
   final String text;
   final double width;
   final Color color;
   final Color textColor;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class TBtnApp extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: TextStyle(
