@@ -3,6 +3,7 @@ import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/helpers/exports.dart';
+import 'package:ecommerceapp/core/widget/Btn/btn_app.dart';
 import 'package:ecommerceapp/core/widget/appbar/appbar.dart';
 import 'package:ecommerceapp/core/widget/custom_shapes/curved_edges/curved_edge_widget.dart';
 import 'package:ecommerceapp/core/widget/icons/circle_icons.dart';
@@ -46,22 +47,11 @@ class ProductDetailsScreen extends StatelessWidget {
 
                   TProductAttributes(),
                   Gap(TSizes.spaceBtwItems),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: TColors.primary,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: MaterialButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Checkout',
-                        style: TextStyle(
-                          color: TColors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
+                  TBtnApp(
+                    text: "Checkout",
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      RoutingHelper.checkoutScreen,
                     ),
                   ),
                   Gap(TSizes.spaceBtwSections),
