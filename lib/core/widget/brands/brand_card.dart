@@ -10,13 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class TBrandCard extends StatelessWidget {
-  const TBrandCard({super.key, this.showBorder = true});
+  const TBrandCard({super.key, this.showBorder = true, this.onTap});
   final bool showBorder;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: TRoundedContainer(
         padding: EdgeInsets.all(TSizes.md),
         showBorder: showBorder,

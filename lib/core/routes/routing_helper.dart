@@ -20,5 +20,9 @@ class RoutingHelper {
   static const String cartScreen = '/cartScreen ';
   static const String checkoutScreen = '/checkoutScreen ';
   static const String orderScreen = '/OrderScreen ';
+  static const String subCategoriesScreen = '/SubCategoriesScreen ';
+  static const String allProductScreen = '/AllProductScreen ';
+  static const String brandScreen = '/BrandScreen ';
+  static const String allBrandScreen = '/AllBrandScreen ';
 
 }

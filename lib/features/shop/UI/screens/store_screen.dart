@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/constants/enums.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
@@ -66,7 +67,10 @@ class StoreScreen extends StatelessWidget {
                       TSectionHeading(
                         title: 'Featured Brands',
                         showActionButton: true,
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          RoutingHelper.brandScreen,
+                        ),
                       ),
                       Gap(TSizes.spaceBtwItems / 1.5),
                       TGridLayout(
