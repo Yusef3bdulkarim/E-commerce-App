@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/widget/Product/product_cards/product_card_vertical.dart';
@@ -35,6 +36,7 @@ class HomeScreen extends StatelessWidget {
                         TSectionHeading(
                           title: 'Popular Categories',
                           showActionButton: false,
+
                         ),
                         Gap(TSizes.spaceBtwItems),
                         THomeCategory(),
@@ -58,7 +60,10 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   Gap(TSizes.spaceBtwItems),
-                  TSectionHeading(title: "Popular Products", onPressed: () {}),
+                  TSectionHeading( onPressed: () => Navigator.pushNamed(
+                    context,
+                    RoutingHelper.allProductScreen,
+                  ),title: "Popular Products"),
                   TGridLayout(
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) =>

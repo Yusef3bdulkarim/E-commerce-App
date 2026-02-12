@@ -10,6 +10,9 @@ import 'package:ecommerceapp/features/personalization/UI/screens/add_new_address
 import 'package:ecommerceapp/features/personalization/UI/screens/address_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/profile_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/all_brand_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/all_product_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/brand_card_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/cart_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/checkout_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
@@ -17,6 +20,7 @@ import 'package:ecommerceapp/features/shop/UI/screens/order_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/product_details.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/product_review_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/store_screen.dart';
+import 'package:ecommerceapp/features/shop/UI/screens/sub_categories.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/wishlist_screen.dart';
 import 'package:ecommerceapp/navigation_menu.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +75,14 @@ class RoutingApp {
         return MaterialPageRoute(builder: (_) => CheckoutScreen());
       case RoutingHelper.orderScreen:
         return MaterialPageRoute(builder: (_) => OrderScreen());
+      case RoutingHelper.subCategoriesScreen:
+        return MaterialPageRoute(builder: (_) => SubCategories());
+      case RoutingHelper.allProductScreen:
+        return MaterialPageRoute(builder: (_) => AllProductScreen());
+      case RoutingHelper.brandScreen:
+        return MaterialPageRoute(builder: (_) => BrandScreen());
+      case RoutingHelper.allBrandScreen:
+        return MaterialPageRoute(builder: (_) => AllBrandScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
