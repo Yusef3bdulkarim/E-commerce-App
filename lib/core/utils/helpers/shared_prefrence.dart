@@ -2,8 +2,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class TSharedPreferences {
   static SharedPreferences? _prefs;
-
-  // أول خطوة: لازم تنادي الـ init دي في الـ main.dart
   static Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }

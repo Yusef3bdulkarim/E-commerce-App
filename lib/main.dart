@@ -24,32 +24,21 @@ void main() async {
   await setupServiceLocator();
   await TSharedPreferences.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  final currentUser = FirebaseAuth.instance.currentUser;
-  String initialroute;
-  if (currentUser == null) {
-    initialroute = RoutingHelper.signInScreen;
-  } else if (!currentUser.emailVerified) {
-    initialroute = RoutingHelper.verifyEmailScreen;
-  } else {
-    initialroute = RoutingHelper.NavigationScreen;
-  }
-  RoutingHelper.NavigationScreen;
 
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt<NetworkManagerCubit>()),
-        BlocProvider(create: (context) => getIt<HomeCubit>()),
-        BlocProvider(create: (context) => getIt<NavBarCubit>()),
-        BlocProvider(create: (context) => getIt<OnboardingCubit>()),
-        BlocProvider(create: (context) => getIt<LoginPasswordCubit>()),
-        BlocProvider(create: (context) => getIt<RegisterCubit>()),
-        BlocProvider(create: (context) => getIt<ProfileCubit>()),
-        BlocProvider(create: (context) => getIt<ForgetPasswordCubit>()),
-        BlocProvider(create: (context) => getIt<ForgetPasswordCubit>()),
-        BlocProvider(create: (context) => getIt<AuthCubit>()),
+        BlocProvider(create: (_) => getIt<NetworkManagerCubit>()),
+        BlocProvider(create: (_) => getIt<HomeCubit>()),
+        BlocProvider(create: (_) => getIt<NavBarCubit>()),
+        BlocProvider(create: (_) => getIt<OnboardingCubit>()),
+        BlocProvider(create: (_) => getIt<LoginPasswordCubit>()),
+        BlocProvider(create: (_) => getIt<RegisterCubit>()),
+        BlocProvider(create: (_) => getIt<ProfileCubit>()..getUserDetails()),
+        BlocProvider(create: (_) => getIt<ForgetPasswordCubit>()),
+        BlocProvider(create: (_) => getIt<AuthCubit>()),
       ],
-      child: MyApp(initialRoute: initialroute),
+      child: MyApp(),
     ),
   );
 }

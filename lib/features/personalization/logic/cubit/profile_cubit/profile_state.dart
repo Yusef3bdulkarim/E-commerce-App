@@ -1,51 +1,11 @@
 part of 'profile_cubit.dart';
 
-// @immutable
-//  class ProfileState extends Equatable {
-//   @override
-//   List<Object?> get props => [];
-//
-// }
-//
-// class ProfileInitial extends ProfileState {}
-//
-// class ProfileLoading extends ProfileState {}
-// class ProfilePicked extends ProfileState {
-//   final File imageFile;
-//   ProfilePicked(this.imageFile);
-//
-//   @override
-//   List<Object?> get props => [imageFile];
-// }
-//
-// class ProfileUploading extends ProfileState {}
-//
-// class ProfileUploaded extends ProfileState {
-//   final String imageUrl;
-//   ProfileUploaded(this.imageUrl);
-//
-//   @override
-//   List<Object?> get props => [imageUrl];
-// }
-//
-//
-// class ProfileSuccess extends ProfileState {
-//   final UserModel user;
-//
-//   ProfileSuccess(this.user);
-// }
-//
-// class ProfileError extends ProfileState {
-//   final String message;
-//
-//   ProfileError(this.message);
-// }
-
 enum RequestStatus { initial, loading, success, error }
 
 class ProfileState extends Equatable {
   final RequestStatus getUserStatus;
   final RequestStatus uploadStatus;
+  final RequestStatus deleteStatus;
   final UserModel? user;
   final File? imageFile;
   final String? imageUrl;
@@ -58,11 +18,13 @@ class ProfileState extends Equatable {
     this.imageFile,
     this.imageUrl,
     this.message,
+    this.deleteStatus = RequestStatus.initial,
   });
 
   ProfileState copyWith({
     RequestStatus? getUserStatus,
     RequestStatus? uploadStatus,
+    RequestStatus? deleteStatus,
     UserModel? user,
     File? imageFile,
     String? imageUrl,
@@ -71,6 +33,7 @@ class ProfileState extends Equatable {
     return ProfileState(
       getUserStatus: getUserStatus ?? this.getUserStatus,
       uploadStatus: uploadStatus ?? this.uploadStatus,
+      deleteStatus: deleteStatus ?? this.deleteStatus,
       user: user ?? this.user,
       imageFile: imageFile ?? this.imageFile,
       imageUrl: imageUrl ?? this.imageUrl,
@@ -81,6 +44,7 @@ class ProfileState extends Equatable {
   @override
   List<Object?> get props => [
     getUserStatus,
+    deleteStatus,
     uploadStatus,
     user,
     imageFile,
