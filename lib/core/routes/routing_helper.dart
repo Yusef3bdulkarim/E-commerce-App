@@ -1,5 +1,6 @@
 class RoutingHelper {
   static const String startScreen = '/';
+  static const String authenticationWrapper = '/authenticationWrapper';
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String signInScreen = '/signInScreen';
   static const String signUpScreen = '/signUpScreen';
@@ -24,5 +25,4 @@ class RoutingHelper {
   static const String allProductScreen = '/AllProductScreen ';
   static const String brandScreen = '/BrandScreen ';
   static const String allBrandScreen = '/AllBrandScreen ';
-
 }

@@ -3,6 +3,9 @@ import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
 import 'package:ecommerceapp/core/widget/appbar/appbar.dart';
 import 'package:ecommerceapp/core/widget/Product/cart/cart_menu_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../personalization/logic/cubit/profile_cubit/profile_cubit.dart';
 
 class THomeAppBar extends StatelessWidget {
   const THomeAppBar({super.key});
@@ -19,15 +22,24 @@ class THomeAppBar extends StatelessWidget {
               context,
             ).textTheme.labelMedium!.apply(color: TColors.grey),
           ),
-          Text(
-            TTexts.homeAppbarSubTitle,
-            style: Theme.of(
-              context,
-            ).textTheme.headlineSmall!.apply(color: TColors.white),
+          BlocBuilder<ProfileCubit, ProfileState>(
+            builder: (context, state) {
+              final user = state.user;
+
+              return Text(
+                user != null
+                    ? "${user.firstName} ${user.lastName}"
+                    : TTexts.homeAppbarSubTitle,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .apply(color: TColors.white),
+              );
+            },
           ),
         ],
       ),
-      actions: [TCartCounterIcon(onPressed: () {},iconColor: TColors.white,)],
+      actions: [TCartCounterIcon(onPressed: () {}, iconColor: TColors.white)],
     );
   }
 }

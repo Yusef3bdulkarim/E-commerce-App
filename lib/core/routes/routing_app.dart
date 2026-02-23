@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/authentication_wrapper.dart';
 import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/forget_password.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/onboarding_screen.dart';
@@ -31,24 +32,20 @@ class RoutingApp {
     // final arguments = settings.arguments;
     switch (settings.name) {
       case RoutingHelper.onBoardingScreen:
-        return MaterialPageRoute(
-          builder: (_) {
-            return BlocProvider(
-              create: (_) => AuthCubit(3),
-              child: OnBoardingScreen(),
-            );
-          },
-        );
+        return MaterialPageRoute(builder: (_) => OnBoardingScreen());
+      case RoutingHelper.authenticationWrapper:
+        return MaterialPageRoute(builder: (_) => AuthenticationWrapper());
       case RoutingHelper.signInScreen:
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case RoutingHelper.signUpScreen:
-        return MaterialPageRoute(builder: (_) => SignUpScreen());
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
       case RoutingHelper.verifyEmailScreen:
-        return MaterialPageRoute(builder: (_) => VerifyEmail());
+        return MaterialPageRoute(builder: (_) => const VerifyEmail());
       case RoutingHelper.forgetPasswordScreen:
         return MaterialPageRoute(builder: (_) => ForgetPassword());
       case RoutingHelper.resetPasswordScreen:
-        return MaterialPageRoute(builder: (_) => ResetPassword());
+        final email = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => ResetPassword(email: email));
       case RoutingHelper.homeScreen:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case RoutingHelper.storeScreen:

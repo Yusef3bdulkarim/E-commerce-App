@@ -2,6 +2,7 @@ import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
+import 'package:ecommerceapp/core/widget/Btn/btn_app.dart';
 import 'package:ecommerceapp/core/widget/appbar/appbar.dart';
 import 'package:ecommerceapp/core/widget/custom_shapes/containers/primary_header_container.dart';
 import 'package:ecommerceapp/core/widget/images/circle_image.dart';
@@ -9,8 +10,11 @@ import 'package:ecommerceapp/core/widget/texts/section_heading.dart';
 import 'package:ecommerceapp/core/widget/tile%20profile/user_profile_tile.dart';
 import 'package:ecommerceapp/features/personalization/UI/widgets/setting_menu_items.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../authentication/logic/cubit/auth_cubit.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -35,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   TUserProfileTile(
-                    onpressed: () => Navigator.pushNamed(
+                    onPressed: () => Navigator.pushNamed(
                       (context),
                       RoutingHelper.profileScreen,
                     ),
@@ -145,6 +149,17 @@ class SettingsScreen extends StatelessWidget {
                         'Upload data to your cloud firebase Shopping delivery address',
                     trailing: Switch(value: true, onChanged: (val) {}),
                   ),
+                  Gap(TSizes.spaceBtwItems/2),
+                  TBtnApp(
+                    text: "Sign Out",
+                    onPressed: (){
+                      context.read<AuthCubit>().signOut();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        RoutingHelper.authenticationWrapper,
+                            (route) => false,
+                      );
+                    },
+                  )
                 ],
               ),
             ),

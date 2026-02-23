@@ -1,16 +1,22 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../data/repo/auth_repo.dart';
+import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(int total) : super(AuthState(currentPage: 0, totalPages: total));
+  final AuthRepo authRepo;
 
-  void updatePageIndex(int index) {
-    emit(state.copyWith(currentPage: index));
-  }
-
-  void nextPage() {
-    emit(state.copyWith(currentPage: state.currentPage + 1));
+  AuthCubit(this.authRepo) : super(AuthInitial());
+  Stream<User?> get authStateChanges => authRepo.authStateChanges;
+  Future<void> signOut() async {
+    try {
+      emit(AuthLoading());
+      await authRepo.signOut();
+      emit(AuthSignedOut());
+    } catch (e) {
+      emit(AuthFailure(error: e.toString()));
+    }
   }
 }
