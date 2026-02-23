@@ -4,7 +4,8 @@ import 'package:ecommerceapp/core/theming/theme_App.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute;
+  const MyApp({super.key, required this.initialRoute});
 
   // This widget is the root of your application.
   @override
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       darkTheme: TThemeApp.darkThemeData,
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       onGenerateRoute: RoutingApp().onGenerateRoute,
-      initialRoute: RoutingHelper.onBoardingScreen,
+      initialRoute: initialRoute,
     );
   }
 }

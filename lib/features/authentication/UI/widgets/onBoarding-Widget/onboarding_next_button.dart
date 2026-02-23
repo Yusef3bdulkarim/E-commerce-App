@@ -4,6 +4,7 @@ import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/device/device_utility.dart';
 import 'package:ecommerceapp/core/utils/helpers/helper_functions.dart';
 import 'package:ecommerceapp/features/authentication/logic/cubit/auth_cubit.dart';
+import 'package:ecommerceapp/features/authentication/logic/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -14,7 +15,8 @@ class OnBoardingNextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return BlocBuilder<AuthCubit, AuthState>(
+
+    return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
         return Positioned(
           right: TSizes.defaultSpace,
@@ -22,19 +24,23 @@ class OnBoardingNextButton extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               if (!state.isLastPage) {
-                context.read<AuthCubit>().nextPage();
+                context.read<OnboardingCubit>().nextPage();
               } else {
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   RoutingHelper.signInScreen,
-                  (route) => false,
+                      (route) => false,
                 );
               }
             },
-            child: const Icon(Iconsax.arrow_right, color: TColors.white),
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),
-              backgroundColor: dark ? TColors.primary : TColors.black,
+              backgroundColor:
+              dark ? TColors.primary : TColors.black,
+            ),
+            child: const Icon(
+              Iconsax.arrow_right,
+              color: TColors.white,
             ),
           ),
         );

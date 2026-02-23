@@ -1,13 +1,21 @@
 import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
+import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/constants/text_strings.dart';
 import 'package:ecommerceapp/core/utils/helpers/helper_functions.dart';
+import 'package:ecommerceapp/core/utils/popups/exports.dart';
+import 'package:ecommerceapp/features/authentication/UI/screens/verify_email.dart';
 import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/divider_auth.dart';
 import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/form_sign_up.dart';
 import 'package:ecommerceapp/features/authentication/UI/widgets/auth-Widget/section_icons_auth.dart';
+import 'package:ecommerceapp/features/authentication/logic/cubit/register_Cubit/register_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+
+import '../../logic/cubit/auth_cubit.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -29,36 +37,6 @@ class SignUpScreen extends StatelessWidget {
               Gap(TSizes.spaceBtwSections),
 
               FormSignUp(),
-              Gap(TSizes.spaceBtwItems),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    shadowColor: Colors.transparent,
-                    backgroundColor: TColors.buttonPrimary,
-                    side: BorderSide(
-                      color: dark ? TColors.borderLight : TColors.borderDark,
-                      width: 1.0,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      RoutingHelper.verifyEmailScreen,
-                    );
-                  },
-                  child: Text(
-                    TTexts.tSignup,
-                    style: TextStyle(
-                      color: TColors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: TSizes.fontSizeMd,
-                    ),
-                  ),
-                ),
-              ),
-
               Gap(TSizes.defaultSpace),
               DividerSignin(textDiivder: " ${TTexts.tOrSignUp} "),
               Gap(TSizes.spaceBtwSections),

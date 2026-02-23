@@ -5,6 +5,7 @@ import 'package:ecommerceapp/features/authentication/UI/widgets/onBoarding-Widge
 import 'package:ecommerceapp/features/authentication/UI/widgets/onBoarding-Widget/onboarding_next_button.dart';
 import 'package:ecommerceapp/features/authentication/UI/widgets/onBoarding-Widget/onboarding_page.dart';
 import 'package:ecommerceapp/features/authentication/logic/cubit/auth_cubit.dart';
+import 'package:ecommerceapp/features/authentication/logic/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,14 +33,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthCubit, AuthState>(
-        listenWhen: (prev, curr) => prev.currentPage != curr.currentPage,
+      body: BlocListener<OnboardingCubit, OnboardingState>(
         listener: (context, state) {
-          _pageController.animateToPage(
-            state.currentPage,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
-          );
+
+            _pageController.animateToPage(
+              state.currentPage,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+
         },
         child: Stack(
           children: [
@@ -47,7 +49,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               controller: _pageController,
 
               onPageChanged: (index) =>
-                  context.read<AuthCubit>().updatePageIndex(index),
+                  context.read<OnboardingCubit>().updatePageIndex(index),
               children: [
                 OnBoardingPage(
                   image: TImages.tOnBoardingImage1,
@@ -77,3 +79,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 }
+
+
+
+
+
+
