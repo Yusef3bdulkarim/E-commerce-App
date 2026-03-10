@@ -33,7 +33,8 @@ void main() async {
         BlocProvider(create: (_) => getIt<HomeCubit>()),
         BlocProvider(create: (_) => getIt<NavBarCubit>()),
         BlocProvider(create: (_) => getIt<OnboardingCubit>()),
-        BlocProvider(create: (_) => getIt<LoginPasswordCubit>()),
+        BlocProvider(create: (_) => getIt<LoginPasswordCubit>())
+        ,
         BlocProvider(create: (_) => getIt<RegisterCubit>()),
         BlocProvider(create: (_) => getIt<ProfileCubit>()..getUserDetails()),
         BlocProvider(create: (_) => getIt<ForgetPasswordCubit>()),
