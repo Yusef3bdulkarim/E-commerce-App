@@ -4,7 +4,16 @@ import 'package:ecommerceapp/features/authentication/logic/cubit/forget_password
 import 'package:ecommerceapp/features/authentication/logic/cubit/login_cubit/login_password_cubit.dart';
 import 'package:ecommerceapp/features/authentication/logic/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:ecommerceapp/features/authentication/logic/cubit/register_Cubit/register_cubit.dart';
-import 'package:ecommerceapp/features/shop/logic/cubit/home_cubit.dart';
+import 'package:ecommerceapp/features/cart/data/repo/cart_repo.dart';
+import 'package:ecommerceapp/features/cart/logic/cart_cubit.dart';
+import 'package:ecommerceapp/features/checkout/data/repo/order_repo.dart';
+import 'package:ecommerceapp/features/products/data/repo/product_repo.dart';
+import 'package:ecommerceapp/features/products/logic/product_controller_cubit.dart';
+import 'package:ecommerceapp/features/shop/data/repo/repo_shop.dart';
+import 'package:ecommerceapp/features/shop/logic/category%20controller/category_cubit.dart';
+import 'package:ecommerceapp/features/shop/logic/home%20controller/home_cubit.dart';
+import 'package:ecommerceapp/features/wishlist_screen/data/repo/washlist_repo.dart';
+import 'package:ecommerceapp/features/wishlist_screen/logic/washlist_cubit.dart';
 import 'package:ecommerceapp/navigation_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
@@ -18,6 +27,9 @@ import '../utils/network/network_managed_cubit.dart';
 final getIt = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
+  getIt.registerLazySingleton<FirebaseFirestore>(
+        () => FirebaseFirestore.instance,
+  );
   getIt.registerLazySingleton<AuthRepo>(() => AuthRepo());
   getIt.registerLazySingleton<NetworkManagerCubit>(() => NetworkManagerCubit());
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
@@ -29,12 +41,19 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit());
   getIt.registerLazySingleton<AuthCubit>(() => AuthCubit(getIt<AuthRepo>()));
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
-  getIt.registerLazySingleton<GoogleSignIn>(()=>GoogleSignIn.standard());
+  getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn.standard());
   getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepo());
-
-
-  getIt.registerLazySingleton<FirebaseFirestore>(
-    () => FirebaseFirestore.instance,
+  getIt.registerLazySingleton<RepoShop>(() => RepoShop());
+  getIt.registerLazySingleton<CategoryCubit>(() => CategoryCubit());
+  getIt.registerLazySingleton<ProductRepo>(() => ProductRepo());
+  getIt.registerLazySingleton<CartCubit>(() => CartCubit());
+  getIt.registerLazySingleton<WashlistCubit>(() => WashlistCubit());
+  getIt.registerLazySingleton<WashlistRepo>(() => WashlistRepo());
+  getIt.registerLazySingleton<CartRepo>(() => CartRepo());
+  getIt.registerLazySingleton<OrderRepository>(() => OrderRepository());
+  getIt.registerLazySingleton<ProductControllerCubit>(
+    () => ProductControllerCubit(),
   );
+
   getIt.registerLazySingleton(() => NetworkCubit());
 }

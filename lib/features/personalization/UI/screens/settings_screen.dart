@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/routes/routing_helper.dart';
+import 'package:ecommerceapp/core/service_git_it/service_locator.dart';
 import 'package:ecommerceapp/core/utils/constants/colors.dart';
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
@@ -9,6 +10,7 @@ import 'package:ecommerceapp/core/widget/images/circle_image.dart';
 import 'package:ecommerceapp/core/widget/texts/section_heading.dart';
 import 'package:ecommerceapp/core/widget/tile%20profile/user_profile_tile.dart';
 import 'package:ecommerceapp/features/personalization/UI/widgets/setting_menu_items.dart';
+import 'package:ecommerceapp/features/products/data/repo/product_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -121,6 +123,8 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   Gap(TSizes.spaceBtwItems),
                   TSettingMenuItems(
+                    onTap: (){
+                    },
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
                     subTitle:

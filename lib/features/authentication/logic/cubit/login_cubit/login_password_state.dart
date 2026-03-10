@@ -25,7 +25,7 @@ class LoginPasswordState {
   }
 }
 
-// الحالات الفرعية بقت بسيطة جداً وبتورث كل شيء
+
 final class LoginInitial extends LoginPasswordState {}
 final class LoginLoading extends LoginPasswordState {}
 final class LoginSuccess extends LoginPasswordState {}

@@ -10,9 +10,21 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class TBrandCard extends StatelessWidget {
-  const TBrandCard({super.key, this.showBorder = true, this.onTap});
+  const TBrandCard({
+    super.key,
+    this.showBorder = true,
+    this.onTap,
+    this.imageIcons,
+    this.nameBrand,
+    this.numberProduct,
+  });
+
   final bool showBorder;
   final VoidCallback? onTap;
+  final String? imageIcons;
+  final String? nameBrand;
+  final String? numberProduct;
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -26,8 +38,9 @@ class TBrandCard extends StatelessWidget {
           children: [
             Flexible(
               child: TCircleImage(
-                image: TImages.clothIcon,
+                image: imageIcons ?? TImages.clothIcon,
                 isNetworkImage: false,
+                fit: BoxFit.contain,
                 backgroundColors: Colors.transparent,
                 overlayColors: dark ? TColors.white : TColors.black,
               ),
@@ -40,11 +53,13 @@ class TBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TBrandTitleTextWithVertifiedIcon(
-                    title: "Nike",
+                    title: nameBrand ?? "Nike",
                     brandTextSize: TextSizes.large,
+                    maxLines: 1,
+
                   ),
                   Text(
-                    '256 Products fffffffffffffffff',
+                    numberProduct ?? '256 Products fffffffffffffffff',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),

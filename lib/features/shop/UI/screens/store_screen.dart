@@ -21,92 +21,100 @@ import 'package:ecommerceapp/features/shop/UI/widgets/store_widget/gategory_tabs
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/service_git_it/service_locator.dart';
+import '../../data/models/Category/model_category.dart';
+import '../../data/repo/repo_shop.dart';
+
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-        appBar: TAppBar(
-          showBackArrow: false,
-          title: Text(
-            'Store',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          actions: [TCartCounterIcon(onPressed: () {})],
-        ),
-        body: NestedScrollView(
-          headerSliverBuilder: (_, innerBoxIsScolled) {
-            return [
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                pinned: true,
-                floating: true,
-                backgroundColor: dark
-                    ? const Color.fromARGB(255, 0, 0, 0)
-                    : TColors.white,
-                expandedHeight: 430,
+    final categoryRepo = getIt<RepoShop>();
 
-                flexibleSpace: Padding(
-                  padding: EdgeInsetsGeometry.all(TSizes.defaultSpace),
-                  child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    children: [
-                      Gap(TSizes.spaceBtwItems),
-                      TSearchContainer(
-                        text: "Search Store",
-                        showBackground: false,
-                        padding: EdgeInsets.zero,
-                      ),
-                      Gap(TSizes.spaceBtwSections),
+    return StreamBuilder<List<ModelCategory>>(
+      stream: categoryRepo.getAllCategoriesStream(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
 
-                      TSectionHeading(
-                        title: 'Featured Brands',
-                        showActionButton: true,
-                        onPressed: () => Navigator.pushNamed(
-                          context,
-                          RoutingHelper.brandScreen,
-                        ),
-                      ),
-                      Gap(TSizes.spaceBtwItems / 1.5),
-                      TGridLayout(
-                        itemCount: 4,
-                        mainAxisExteny: 80,
-                        itemBuilder: (context, index) {
-                          return const TBrandCard();
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+        if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Scaffold(
+            body: Center(child: Text("No Categories Found")),
+          );
+        }
 
-                bottom: TTabBar(
-                  tabs: [
-                    Tab(child: Text("sports")),
-                    Tab(child: Text("Furniture")),
-                    Tab(child: Text("Electronics")),
-                    Tab(child: Text("Clothes")),
-                    Tab(child: Text("Cosmetics")),
-                  ],
-                ),
+        final categories = snapshot.data!;
+
+        return DefaultTabController(
+          length: categories.length,
+          child: Scaffold(
+            appBar: TAppBar(
+              title: Text(
+                'Store',
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
-            ];
-          },
-          body: TabBarView(
-            children: [
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-              TCategoryTab(),
-            ],
+              actions: [TCartCounterIcon(onPressed: () {})],
+              showBackArrow: false,
+            ),
+            body: NestedScrollView(
+              headerSliverBuilder: (_, innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    automaticallyImplyLeading: false,
+                    pinned: true,
+                    floating: true,
+                    backgroundColor: dark ? Colors.black : TColors.white,
+                    expandedHeight: 440,
+                    flexibleSpace: Padding(
+                      padding: const EdgeInsets.all(TSizes.defaultSpace),
+                      child: ListView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        children: [
+                          const Gap(TSizes.spaceBtwItems),
+                          TSearchContainer(
+                            text: "Search Store",
+                            showBackground: false,
+                            padding: EdgeInsets.zero,
+                          ),
+                          const Gap(TSizes.spaceBtwSections),
+                          TSectionHeading(
+                            title: 'Featured Brands',
+                            showActionButton: true,
+                            onPressed: () {},
+                          ),
+                          const Gap(TSizes.spaceBtwItems / 1.5),
+                          TGridLayout(
+                            itemCount: 4,
+                            mainAxisExteny: 80,
+                            itemBuilder: (_, index) => const TBrandCard(),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    bottom: TTabBar(
+                      tabs: categories
+                          .map((e) => Tab(child: Text(e.name)))
+                          .toList(),
+                    ),
+                  ),
+                ];
+              },
+              body: TabBarView(
+                children: categories
+                    .map((e) => TCategoryTab(category: e))
+                    .toList(),
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

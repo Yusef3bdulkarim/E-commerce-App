@@ -131,4 +131,6 @@ class AuthRepo {
       throw 'Error fetching user details: $e';
     }
   }
+  //////////////////
+
 }
