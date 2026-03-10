@@ -8,10 +8,12 @@ class TProductTitleText extends StatelessWidget {
     this.maxlines = 2,
     this.textAlign = TextAlign.left,
   });
+
   final String title;
   final bool smallSize;
   final int maxlines;
   final TextAlign? textAlign;
+
   @override
   Widget build(BuildContext context) {
     return Text(

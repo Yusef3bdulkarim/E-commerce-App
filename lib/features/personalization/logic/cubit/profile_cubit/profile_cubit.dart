@@ -6,7 +6,7 @@ import 'package:ecommerceapp/features/authentication/data/repo/auth_repo.dart';
 import 'package:ecommerceapp/features/personalization/data/repo/profile_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../../Cloudinary_Repository/cloudinary_repo.dart';
+import '../../../../../core/Cloudinary_Repository/cloudinary_repo.dart';
 import '../../../../authentication/data/models/auth_model.dart';
 part 'profile_state.dart';
 

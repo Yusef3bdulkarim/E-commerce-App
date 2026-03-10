@@ -6,26 +6,28 @@ import 'package:ecommerceapp/features/authentication/UI/screens/reset_password.d
 import 'package:ecommerceapp/features/authentication/UI/screens/sign_in_screen.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/sign_up_screen.dart';
 import 'package:ecommerceapp/features/authentication/UI/screens/verify_email.dart';
-import 'package:ecommerceapp/features/authentication/logic/cubit/auth_cubit.dart';
+import 'package:ecommerceapp/features/checkout/UI/screens/checkout_screen.dart';
+import 'package:ecommerceapp/features/checkout/logic/checkout_cubit.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/add_new_address.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/address_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/profile_screen.dart';
 import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/all_brand_screen.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/all_product_screen.dart';
+import 'package:ecommerceapp/features/products/UI/screens/all_product_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/brand_card_screen.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/cart_screen.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/checkout_screen.dart';
+import 'package:ecommerceapp/features/cart/UI/screens/cart_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/order_screen.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/product_details.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/product_review_screen.dart';
+import 'package:ecommerceapp/features/products/UI/screens/product_details.dart';
+import 'package:ecommerceapp/features/products/UI/screens/product_review_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/store_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/sub_categories.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/wishlist_screen.dart';
+import 'package:ecommerceapp/features/wishlist_screen/UI/screens/wishlist_screen.dart';
 import 'package:ecommerceapp/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../features/products/data/models/product_model.dart';
 
 class RoutingApp {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -58,8 +60,11 @@ class RoutingApp {
         return MaterialPageRoute(builder: (_) => ProfileScreen());
       case RoutingHelper.NavigationScreen:
         return MaterialPageRoute(builder: (_) => NavigationMenu());
-      case RoutingHelper.productDetailsScreen:
-        return MaterialPageRoute(builder: (_) => ProductDetailsScreen());
+      // case RoutingHelper.productDetailsScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => ProductDetailsScreen(),
+      //     settings: settings,
+      //   );
       case RoutingHelper.productReviewScreen:
         return MaterialPageRoute(builder: (_) => ProductReviewScreen());
       case RoutingHelper.userAddressScreen:
@@ -69,11 +74,18 @@ class RoutingApp {
       case RoutingHelper.addNewAddressScreen:
         return MaterialPageRoute(builder: (_) => AddNewAddressScreen());
       case RoutingHelper.checkoutScreen:
-        return MaterialPageRoute(builder: (_) => CheckoutScreen());
+        final product = settings.arguments as ProductModel;
+        return MaterialPageRoute(
+          builder: (_) => CheckoutScreen(),
+          // settings: settings,
+        );
       case RoutingHelper.orderScreen:
         return MaterialPageRoute(builder: (_) => OrderScreen());
       case RoutingHelper.subCategoriesScreen:
-        return MaterialPageRoute(builder: (_) => SubCategories());
+        return MaterialPageRoute(
+          builder: (_) => const SubCategories(),
+          settings: settings, // السطر ده هو اللي هينقل الـ arguments للشاشة
+        );
       case RoutingHelper.allProductScreen:
         return MaterialPageRoute(builder: (_) => AllProductScreen());
       case RoutingHelper.brandScreen:

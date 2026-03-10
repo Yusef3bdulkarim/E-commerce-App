@@ -17,18 +17,21 @@ class TBrandTitileText extends StatelessWidget {
   final TextSizes brandTextSize;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      textAlign: textAlign,
-      maxLines: maxLines,
-      overflow: TextOverflow.ellipsis,
-      style: brandTextSize == TextSizes.small
-          ? Theme.of(context).textTheme.labelMedium!.apply(color: color)
-          : brandTextSize == TextSizes.medium
-          ? Theme.of(context).textTheme.bodyMedium!.apply(color: color)
-          : brandTextSize == TextSizes.large
-          ? Theme.of(context).textTheme.titleLarge
-          : Theme.of(context).textTheme.bodyMedium!.apply(color: color),
+    return SizedBox(
+      width: 95,
+      child: Text(
+        title,
+        textAlign: textAlign,
+        maxLines: maxLines,
+        overflow: TextOverflow.ellipsis,
+        style: brandTextSize == TextSizes.small
+            ? Theme.of(context).textTheme.labelMedium!.apply(color: color)
+            : brandTextSize == TextSizes.medium
+            ? Theme.of(context).textTheme.bodyMedium!.apply(color: color)
+            : brandTextSize == TextSizes.large
+            ? Theme.of(context).textTheme.titleLarge
+            : Theme.of(context).textTheme.bodyMedium!.apply(color: color),
+      ),
     );
   }
 }

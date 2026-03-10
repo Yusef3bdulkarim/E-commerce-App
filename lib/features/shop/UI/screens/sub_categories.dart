@@ -1,14 +1,42 @@
 import 'package:ecommerceapp/core/utils/constants/image_strings.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
+import 'package:ecommerceapp/core/utils/popups/exports.dart';
 import 'package:ecommerceapp/core/widget/Product/product_cards/product_card_horizontal.dart';
 import 'package:ecommerceapp/core/widget/appbar/appbar.dart';
 import 'package:ecommerceapp/core/widget/images/rounded_image.dart';
 import 'package:ecommerceapp/core/widget/texts/section_heading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-class SubCategories extends StatelessWidget {
+import '../../../../core/service_git_it/service_locator.dart';
+import '../../../../core/utils/shimmers/shimmer.dart';
+import '../../../products/data/models/product_model.dart';
+import '../../../products/data/repo/product_repo.dart';
+import '../../../products/logic/product_controller_cubit.dart';
+import '../../data/models/Category/model_category.dart';
+import '../../logic/category controller/category_cubit.dart';
+import '../widgets/sub_category_section.dart';
+
+class SubCategories extends StatefulWidget {
   const SubCategories({super.key});
+
+  @override
+  State<SubCategories> createState() => _SubCategoriesState();
+}
+
+class _SubCategoriesState extends State<SubCategories> {
+  late ModelCategory category;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    category = ModalRoute.of(context)!.settings.arguments as ModelCategory;
+    context.read<CategoryCubit>().fetchSubCategories(category.id);
+    context.read<ProductControllerCubit>().fetchProductsForCategory(
+      category.id,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,90 +44,56 @@ class SubCategories extends StatelessWidget {
       appBar: TAppBar(
         showBackArrow: true,
         title: Text(
-          'Order Review',
+          category.name,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
-        child: Column(
-          children: [
-            TRoundedImage(
-              imageUrl: TImages.banner2,
-              width: double.infinity,
-              applyImageRadius: true,
-            ),
-            Gap(TSizes.spaceBtwSections),
-            Column(
+
+      body: BlocBuilder<CategoryCubit, CategoryState>(
+        builder: (context, state) {
+          if (state.status == CategoryStatus.loading)
+            return TShimmerEffect(height: 100, width: double.infinity);
+
+          for (var subCat in state.subCategories) {
+            if (!(context
+                .read<ProductControllerCubit>()
+                .state
+                .subCategoryProducts
+                .containsKey(subCat.id))) {
+              context
+                  .read<ProductControllerCubit>()
+                  .fetchProductsForSubCategory(subCat.id);
+            }
+          }
+
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            child: Column(
               children: [
-                TSectionHeading(title: 'Sports Shirts', onPressed: () {}),
-                Gap(TSizes.spaceBtwItems / 2),
-                SizedBox(
-                  height: 115,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return TProductCardHorizontal(
-                        image: TImages.productImage63,
-                        title: "Adidas Football",
-                        subTitle: 'Adidas',
-                        price: '50.0',
-                        isShowDiscount: true,
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
-                        Gap(TSizes.spaceBtwItems),
-                    itemCount: 4,
-                  ),
+                TRoundedImage(
+                  imageUrl: category.banner.isNotEmpty
+                      ? category.banner
+                      : TImages.banner2,
+                  width: double.infinity,
+                  applyImageRadius: true,
                 ),
+                const Gap(TSizes.spaceBtwSections),
 
-                TSectionHeading(title: 'Sports Shoes', onPressed: () {}),
-                Gap(TSizes.spaceBtwItems / 2),
-                SizedBox(
-                  height: 115,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return TProductCardHorizontal(
-                        image: TImages.productImage63,
-                        title: "Adidas Football",
-                        subTitle: 'Adidas',
-                        price: '50.0',
-                        isShowDiscount: true,
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
-                        Gap(TSizes.spaceBtwItems),
-                    itemCount: 4,
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: state.subCategories.length,
+                  itemBuilder: (context, index) {
+                    return TSubCategorySection(
+                      title: state.subCategories[index].id,
+                      subCategoryId: state.subCategories[index].id,
+                    );
+                  },
                 ),
-                TSectionHeading(title: 'Track Sults', onPressed: () {}),
-                Gap(TSizes.spaceBtwItems / 2),
-                SizedBox(
-                  height: 115,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return TProductCardHorizontal(
-                        image: TImages.productImage21,
-                        title: "Adidas Football",
-                        subTitle: 'Adidas',
-                        price: '50.0',
-                        isShowDiscount: true,
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
-                        Gap(TSizes.spaceBtwItems),
-                    itemCount: 4,
-                  ),
-                ),
-
-
-
               ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

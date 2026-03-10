@@ -27,13 +27,11 @@ class AuthenticationWrapper extends StatelessWidget {
 
         final isGoogleUser = user.providerData.any((p) => p.providerId == 'google.com');
 
-        // لو ايميل محقق أو Google user يسمح بالدخول
         if (isGoogleUser || user.emailVerified) {
           context.read<ProfileCubit>().getUserDetails();
           return const NavigationMenu();
         }
 
-        // ايميل غير محقق
         return VerifyEmail(email: user.email);
       },
     );

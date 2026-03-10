@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/routes/routing_helper.dart';
 import 'package:ecommerceapp/core/utils/constants/sizes.dart';
 import 'package:ecommerceapp/core/utils/helpers/imageProvider.dart';
 import 'package:ecommerceapp/core/utils/popups/exports.dart';
@@ -54,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           }
           if (state.deleteStatus == RequestStatus.success) {
             Navigator.of(context).pushNamedAndRemoveUntil(
-              '/authWrapper',
+              RoutingHelper.authenticationWrapper,
                   (route) => false,
             );
           }

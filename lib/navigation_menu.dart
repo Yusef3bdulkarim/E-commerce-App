@@ -4,7 +4,7 @@ import 'package:ecommerceapp/features/personalization/UI/screens/settings_screen
 import 'package:ecommerceapp/features/personalization/logic/cubit/personalization_cubit.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/home_screen.dart';
 import 'package:ecommerceapp/features/shop/UI/screens/store_screen.dart';
-import 'package:ecommerceapp/features/shop/UI/screens/wishlist_screen.dart';
+import 'package:ecommerceapp/features/wishlist_screen/UI/screens/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';

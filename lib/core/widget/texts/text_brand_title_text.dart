@@ -16,6 +16,7 @@ class TBrandTitleTextWithVertifiedIcon extends StatelessWidget {
     this.textColors,
     this.iconColors = TColors.primary,
   });
+
   final TextAlign? textAlign;
   final TextSizes brandTextSize;
   final String title;
@@ -25,15 +26,20 @@ class TBrandTitleTextWithVertifiedIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min, // يضمن أن الصف يأخذ أقل مساحة ممكنة
       children: [
-        TBrandTitileText(
-          title: title,
-          color: textColors,
-          maxLines: maxLines,
-          textAlign: textAlign,
-          brandTextSize: brandTextSize,
+        // النص هو الذي يحتاج للتمدد إذا كان طويلاً فقط
+        Flexible(
+          child: TBrandTitileText(
+            title: title,
+            color: textColors,
+            maxLines: maxLines,
+            textAlign: textAlign,
+            brandTextSize: brandTextSize,
+          ),
         ),
-        Gap(TSizes.xs),
+        const Gap(TSizes.sm),
+        // الأيقونة لا تحتاج Expanded لأن حجمها ثابت (iconXs)
         Icon(Iconsax.verify5, color: iconColors, size: TSizes.iconXs),
       ],
     );
