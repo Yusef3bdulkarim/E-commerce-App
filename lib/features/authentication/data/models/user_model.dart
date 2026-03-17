@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
   final String id;
-  String firstName; // خليناها من غير final عشان لو حبيت تعدلها في البروفايل
+  String firstName;
   String lastName;
   final String userName;
   final String email;
@@ -22,9 +22,6 @@ class UserModel {
 
   String get fullName => '$firstName $lastName';
 
-  // --- التعديلات الجديدة ---
-
-  // 1. تحويل بيانات Firebase Firestore لـ Model
   factory UserModel.fromSnapshot(
     DocumentSnapshot<Map<String, dynamic>> document,
   ) {
@@ -44,7 +41,6 @@ class UserModel {
     }
   }
 
-  // 2. تحويل بيانات GoogleSignInAccount لـ Model (لأول مرة تسجيل)
   factory UserModel.fromGoogle(User user) {
     List<String> nameParts = user.displayName?.split(" ") ?? ["", ""];
     String fName = nameParts[0];
@@ -61,7 +57,6 @@ class UserModel {
     );
   }
 
-  // --- الميثودز اللي كانت عندك ---
 
   static String generateUserName(String fullName) {
     List<String> nameParts = fullName.split(" ");

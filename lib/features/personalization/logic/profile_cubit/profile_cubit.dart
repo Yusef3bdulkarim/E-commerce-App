@@ -7,7 +7,7 @@ import 'package:ecommerceapp/features/personalization/data/repo/profile_repo.dar
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../../core/Cloudinary_Repository/cloudinary_repo.dart';
-import '../../../../authentication/data/models/auth_model.dart';
+import '../../../../authentication/data/models/user_model.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
